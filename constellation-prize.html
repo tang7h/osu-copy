@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Constellation Prize</title>
+</head>
+<style>
+* {
+  box-sizing: border-box;
+}
+body {
+  background: url(maxresdefault.jpg) no-repeat center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+.ball,
+.ball-shadow {
+  width: 50vmin;
+  height: 50vmin;
+  border-radius: 50%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  margin-top: -25vmin;
+  margin-left: -25vmin;
+}
+.ball {
+  background: #222;
+  border: 4px solid #fff;
+  z-index: 8;
+}
+.ball-shadow {
+  box-shadow: 0 0 20vmin 5vmin hsl(210, 100%, 50%);
+  mix-blend-mode: hard-light;
+  z-index: -2
+}
+.line-through {
+  width: 100vw;
+  height: 5px;
+  background: linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,1) 30%,rgba(255,255,255,1) 70%,rgba(255,255,255,0)) ;
+  position: fixed;
+  top: 50vh;
+  left: 0;
+  z-index: -1;
+  mix-blend-mode: screen;
+}
+.stars {
+  z-index: 0
+}
+.star-track {
+  position: fixed;
+  transform: rotate(30deg);
+  transform-origin: left;
+  padding-left: 15vmax;
+  /*background: tomato;*/
+}
+/*.star-track:nth-child(2n){
+  transform: rotate(50deg);
+}*/
+.star {
+  width: 4px;
+  height: 4px;
+  background: hsl(196, 100%, 75%);
+  animation: star 2s ease-in infinite;
+
+}
+
+@keyframes star {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(75vmax);
+  }
+}
+
+.mask {
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -10;
+  mix-blend-mode: overlay;
+}
+
+</style>
+<body>
+  <div class="container">
+    <div class="ball"></div>
+    <div class="ball-shadow"></div>
+    <div class="line-through"></div>
+    <div class="stars" id="stars">
+      <div class="star-track" id="star"><div class="star"></div></div>
+    </div>
+    <div class="mask"></div>
+  </div>
+  <script>
+    var stars = document.getElementById('stars');
+    var star = document.getElementById('star');
+    for(var i=0; i<500; i++){
+      var starT = star.cloneNode(true);
+      starT.style.transform = "rotate("+Math.random()*360+"deg)";
+      starT.childNodes[0].style.animationDelay = Math.random()*2+"s";
+      stars.appendChild(starT);
+    }
+  </script>
+</body>
+</html>
