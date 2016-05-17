@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="initial-scale=1,user-scalable=no">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
   <title>Constellation Prize</title>
 </head>
 <style>
@@ -11,14 +11,15 @@
   margin: 0;
 }
 body {
-  margin: 0;
-  background: url(maxresdefault.jpg) no-repeat center;
+  background: #333 url(maxresdefault.jpg) no-repeat center;
   background-size: cover;
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 100vw;
   height: 100vh;
   overflow: hidden;
+  font-size: 2vmin;
 }
 .ball,
 .ball-shadow {
@@ -42,20 +43,18 @@ body {
   align-items: center;
   color: #fff;
   font-family: arial, "Hiragino Sans GB", "Microsoft Yahei", sans-serif;
-  font-size: 3vmin;
   box-shadow: 0 0 2vmin rgba(255,255,255,.5),0 0 1vmin rgba(255,255,255,.5)inset;
 }
 .ball p {
 }
 h1 {
-  font-size: inherit;
+  font-size: 1.5em;
   font-weight: 500;
   margin-bottom: .5em;
 }
 p.desc {
   width: 72%;
   text-align: center;
-  font-size: 2vmin;
   color: hsl(194, 62%, 66%);
 }
 .ball-shadow {
@@ -95,7 +94,10 @@ p.desc {
   animation: star 2s ease-in infinite;
 }
 .star-track:nth-child(2n) .star{
-  animation-duration: 1s;
+  animation-duration: 1.2s;
+}
+.star-track:nth-child(3n) .star{
+  animation-duration: 3s;
 }
 @keyframes star {
   0% {
@@ -119,19 +121,29 @@ p.desc {
 .circle {
   opacity: .3;
   animation: circle 30s linear infinite;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 100vmax;
+  height: 100vmax;
+  margin-left: -50vmax;
+  margin-top: -50vmax;
 }
 @keyframes circle {
   to {
     transform: rotate(360deg);
   }
 }
+.medal {
+  width: 8em;
+}
 </style>
 <body>
   <div class="container">
     <div class="ball">
-      <img src="osu-medal.svg">
+      <img src="osu-medal.svg" class="medal">
       <h1>解锁新成就</h1>
-      <p>Constellation Prize</p>
+      <h1>Constellation Prize</h1>
       <p class="desc">Lorem ipsum dolor sit amet conse ctetur adipisicing elit</p>
     </div>
     <div class="ball-shadow"></div>
