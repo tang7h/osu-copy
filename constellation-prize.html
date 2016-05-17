@@ -29,14 +29,16 @@
   </div>
   <script>
     var stars = document.getElementById('stars');
+    var starsT = stars.cloneNode(true)
     var star = document.getElementById('star-template').getElementsByClassName('star-track')[0];
     for(var i=0; i<500; i++){
       var starT = star.cloneNode(true);
       starT.style.transform = "rotate("+Math.random()*360+"deg)";
       starT.style.opacity = Math.random();
       starT.childNodes[0].style.animationDelay = Math.random()*2+"s";
-      stars.appendChild(starT);
+      starsT.appendChild(starT);
     }
+    stars.appendChild(starsT);
   </script>
 </body>
 </html>
